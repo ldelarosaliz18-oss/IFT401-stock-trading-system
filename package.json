@@ -1,0 +1,26 @@
+{
+  "name": "ift401-stock-trading-system",
+  "version": "1.0.0",
+  "description": "Capstone project for a simulated stock trading system .",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ldelarosaliz18-oss/IFT401-stock-trading-system.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/ldelarosaliz18-oss/IFT401-stock-trading-system/issues"
+  },
+  "homepage": "https://github.com/ldelarosaliz18-oss/IFT401-stock-trading-system#readme",
+  "dependencies": {
+    "dotenv": "^18.0.4",
+    "express": "^5.2.1",
+    "mongoose": "^9.10.2"
+  }
+}
