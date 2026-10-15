@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Market Dashboard · StockTrade</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body class="app-body">
+    <div class="app-shell">
+      <header class="app-header">
+        <a class="brand brand-dark" href="dashboard.html">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path
+                d="M4 16.5L9 11l3.5 3.5L20 7"
+                stroke="currentColor"
+                stroke-width="2.4"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M15 7h5v5"
+                stroke="currentColor"
+                stroke-width="2.4"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </span>
+          <span class="brand-name">STOCKTRADE</span>
+        </a>
+        <nav class="app-nav" aria-label="Primary">
+          <a class="nav-link active" href="dashboard.html">Market Dashboard</a>
+          <a class="nav-link" href="orders.html">Orders</a>
+          <a class="nav-link" href="portfolio.html">Portfolio</a>
+          <a class="nav-link" href="history.html">History</a>
+        </nav>
+        <div class="header-meta">
+          <div class="buying-power">
+            <span class="meta-label">Available cash balance</span>
+            <strong id="buying-power">$0.00</strong>
+          </div>
+          <div class="account-chip">
+            <span id="user-name">Trader</span>
+            <button id="sign-out" class="btn-logout" type="button">Logout</button>
+          </div>
+        </div>
+      </header>
+
+      <div class="dash-grid">
+        <section class="card watchlist-card">
+          <h2>Market Watchlist</h2>
+          <label class="search-field">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <circle cx="11" cy="11" r="6.5" stroke="currentColor" stroke-width="1.8" />
+              <path d="M16 16l4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+            </svg>
+            <input id="watch-search" type="search" placeholder="Search by ticker or name..." />
+          </label>
+          <div id="watchlist" class="watchlist"></div>
+        </section>
+
+        <div class="dash-main">
+          <section class="card quote-card">
+            <div class="quote-head">
+              <div class="quote-identity">
+                <span id="quote-logo" class="ticker-logo lg">NV</span>
+                <h1 id="quote-name">NVIDIA Corp. (NVDA)</h1>
+              </div>
+              <div class="quote-price-block">
+                <p id="quote-price" class="quote-price">$128.20</p>
+                <p id="quote-change" class="up">+$5.08 (+4.12%)</p>
+              </div>
+            </div>
+            <div id="quote-chart" class="quote-chart-wrap"></div>
+            <dl class="quote-stats">
+              <div>
+                <dt>Previous close</dt>
+                <dd id="stat-prev">$123.12</dd>
+                <dt>Daily low</dt>
+                <dd id="stat-low">$123.40</dd>
+              </div>
+              <div>
+                <dt>Opening Price</dt>
+                <dd id="stat-open">$124.50</dd>
+                <dt>Daily high</dt>
+                <dd id="stat-high">$130.40</dd>
+              </div>
+              <div>
+                <dt>Daily Volume</dt>
+                <dd id="stat-volume">48.2M</dd>
+              </div>
+              <div>
+                <dt>Market cap</dt>
+                <dd id="stat-cap">$3.15T</dd>
+              </div>
+            </dl>
+          </section>
+
+          <section class="card trade-bar">
+            <h2>Quick Buy / Sell Entry</h2>
+            <div class="trade-controls">
+              <label class="qty-field">
+                <input id="share-qty" type="number" min="1" step="1" value="10" />
+                <span>Shares</span>
+              </label>
+              <button id="buy-order" class="btn-buy" type="button">Buy Order</button>
+              <button id="sell-order" class="btn-sell" type="button">Sell Order</button>
+            </div>
+          </section>
+          <p id="trade-message" class="trade-message" hidden></p>
+        </div>
+      </div>
+    </div>
+    <script src="js/auth.js"></script>
+    <script src="js/market.js"></script>
+    <script src="js/trading.js"></script>
+    <script src="js/shell.js"></script>
+    <script src="js/dashboard.js"></script>
+  </body>
+</html>

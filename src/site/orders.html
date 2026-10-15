@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Orders · StockTrade</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body class="app-body">
+    <div class="app-shell">
+      <header class="app-header">
+        <a class="brand brand-dark" href="dashboard.html">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M4 16.5L9 11l3.5 3.5L20 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M15 7h5v5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </span>
+          <span class="brand-name">STOCKTRADE</span>
+        </a>
+        <nav class="app-nav" aria-label="Primary">
+          <a class="nav-link" href="dashboard.html">Market Dashboard</a>
+          <a class="nav-link active" href="orders.html">Orders</a>
+          <a class="nav-link" href="portfolio.html">Portfolio</a>
+          <a class="nav-link" href="history.html">History</a>
+        </nav>
+        <div class="header-meta">
+          <div class="buying-power">
+            <span class="meta-label">Available cash balance</span>
+            <strong id="buying-power">$0.00</strong>
+          </div>
+          <div class="account-chip">
+            <span id="user-name">Trader</span>
+            <button id="sign-out" class="btn-logout" type="button">Logout</button>
+          </div>
+        </div>
+      </header>
+
+      <div class="orders-layout">
+        <section class="card ticket-card">
+          <h1>New Trade Ticket</h1>
+          <div class="side-toggle" role="tablist" aria-label="Order side">
+            <button type="button" class="side-btn active" data-side="buy">Buy Order</button>
+            <button type="button" class="side-btn" data-side="sell">Sell Order</button>
+          </div>
+          <div class="ticket-grid">
+            <label>
+              Symbol
+              <select id="order-type">
+                <option value="limit">NVDA</option>
+                <option value="market">AAPL</option>
+                <option value="market">TSLA</option>
+                <option value="market">MSFT</option>
+                <option value="market">AMZN</option>
+                <option value="market">AMD</option>
+              </select>
+            </label>
+            <label>
+              Order Type
+              <select id="order-type">
+                <option value="limit">Limit Order</option>
+                <option value="market">Market Order</option>
+              </select>
+            </label>
+            <label>
+              Quantity (Shares)
+              <input id="qty" type="number" min="1" step="1" value="100" />
+            </label>
+            <label id="limit-wrap">
+              Limit Price
+              <input id="limit-price" type="text" inputmode="decimal" />
+            </label>
+          </div>
+        </section>
+
+        <aside class="card review-card">
+          <h2>
+            <span class="review-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.8" />
+                <path d="M12 8v4l2.5 1.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+              </svg>
+            </span>
+            Review order
+          </h2>
+          <dl class="review-rows">
+            <div>
+              <dt>Action</dt>
+              <dd id="review-action">BUY</dd>
+            </div>
+            <div>
+              <dt>Security</dt>
+              <dd id="review-security">NVIDIA (NVDA)</dd>
+            </div>
+            <div>
+              <dt>Quantity</dt>
+              <dd id="review-qty">100 Shares</dd>
+            </div>
+            <div>
+              <dt id="review-limit-label">Limit Price</dt>
+              <dd id="review-limit">$128.00</dd>
+            </div>
+            <div>
+              <dt id="review-cost-label">Estimated Cost</dt>
+              <dd id="review-cost">$6,400.00</dd>
+            </div>
+          </dl>
+          <button id="complete-order" class="btn-primary" type="button">Complete Order</button>
+          <button id="cancel-order" class="btn-cancel" type="button">Cancel Order</button>
+          <p id="order-message" class="trade-message" hidden></p>
+        </aside>
+      </div>
+
+      <section id="open-orders" class="card page-card" hidden></section>
+    </div>
+    <script src="js/auth.js"></script>
+    <script src="js/market.js"></script>
+    <script src="js/trading.js"></script>
+    <script src="js/shell.js"></script>
+    <script src="js/orders.js"></script>
+  </body>
+</html>

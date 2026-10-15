@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create your account · StockTrade</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <main class="auth-layout">
+      <section class="auth-brand" aria-label="StockTrade">
+        <a class="brand" href="index.html">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path
+                d="M4 16.5L9 11l3.5 3.5L20 7"
+                stroke="currentColor"
+                stroke-width="2.4"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M15 7h5v5"
+                stroke="currentColor"
+                stroke-width="2.4"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </span>
+          <span class="brand-name">STOCKTRADE</span>
+        </a>
+      </section>
+
+      <section class="auth-panel">
+        <div class="auth-card">
+          <h1>Create your account</h1>
+          <p class="lede">Set up your profile and start trading with simulated funds.</p>
+
+          <form id="register-form" novalidate>
+            <div class="field-row">
+              <div>
+                <label for="first-name">First name</label>
+                <input
+                  id="first-name"
+                  name="firstName"
+                  type="text"
+                  autocomplete="given-name"
+                  placeholder="First name"
+                  required
+                />
+              </div>
+              <div>
+                <label for="last-name">Last name</label>
+                <input
+                  id="last-name"
+                  name="lastName"
+                  type="text"
+                  autocomplete="family-name"
+                  placeholder="Last name"
+                  required
+                />
+              </div>
+            </div>
+
+            <label for="username">Username</label>
+            <input
+              id="username"
+              name="username"
+              type="text"
+              autocomplete="username"
+              placeholder="Username"
+              required
+            />
+
+            <label for="email">Email</label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              autocomplete="email"
+              placeholder="email@example.com"
+              required
+            />
+
+            <label for="password">Password</label>
+            <div class="password-field">
+              <input
+                id="password"
+                name="password"
+                type="password"
+                autocomplete="new-password"
+                placeholder="Create a password"
+                minlength="8"
+                required
+              />
+              <button
+                type="button"
+                class="toggle-password"
+                aria-label="Show password"
+                data-target="password"
+              >
+                <svg class="icon-eye" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path
+                    d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                  />
+                  <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.8" />
+                </svg>
+                <svg class="icon-eye-off hidden" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path
+                    d="M3 3l18 18M9.9 9.9A3 3 0 0014.1 14M6.7 6.8C4.3 8.3 2.8 10.6 2 12c0 0 3.5 7 10 7 1.9 0 3.6-.5 5-1.3M17.3 17.2C19.6 15.7 21.1 13.4 22 12c0 0-3.5-7-10-7-1 0-1.9.1-2.8.4"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </button>
+            </div>
+            <p class="field-hint">Use at least 8 characters.</p>
+
+            <p id="form-error" class="form-error" role="alert" hidden></p>
+
+            <button class="btn-primary" type="submit">Create account</button>
+          </form>
+
+          <p class="auth-footer">
+            Already have an account?
+            <a href="index.html">Sign in here</a>
+          </p>
+        </div>
+      </section>
+    </main>
+    <script src="js/auth.js"></script>
+    <script src="js/register.js"></script>
+  </body>
+</html>
