@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Market Dashboard · StockTrade</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body class="app-body">
+    <div class="app-shell">
+      <header class="app-header">
+        <a class="brand brand-dark" href="dashboard.html">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path
+                d="M4 16.5L9 11l3.5 3.5L20 7"
+                stroke="currentColor"
+                stroke-width="2.4"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M15 7h5v5"
+                stroke="currentColor"
+                stroke-width="2.4"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </span>
+          <span class="brand-name">STOCKTRADE</span>
+        </a>
+        <nav class="app-nav" aria-label="Primary">
+          <a class="nav-link active" href="dashboard.html">Market Dashboard</a>
+          <a class="nav-link" href="orders.html">Orders</a>
+          <a class="nav-link" href="portfolio.html">Portfolio</a>
+          <a class="nav-link" href="history.html">History</a>
+        </nav>
+        <div class="header-meta">
+          <div class="buying-power">
+            <span class="meta-label">Available cash balance</span>
+            <strong id="buying-power">$0.00</strong>
+          </div>
+          <div class="account-chip">
+            <span id="user-name">Trader</span>
+            <button id="sign-out" class="btn-logout" type="button">Logout</button>
+          </div>
+        </div>
+      </header>
+
+      <div class="dash-grid">
+        <section class="card watchlist-card">
+          <h2>Market Watchlist</h2>
+          <div id="watchlist" class="watchlist"></div>
+        </section>
+
+        <div class="dash-main">
+          <section class="card quote-card">
+            <div class="quote-head">
+              <div class="quote-identity">
+                <h1 id="quote-name">Select a stock</h1>
+              </div>
+              <div class="quote-price-block">
+                <p id="quote-price" class="quote-price">—</p>
+                <p id="quote-change"></p>
+              </div>
+            </div>
+            <p class="market-note">Stock prices update every 5 seconds during market hours.</p>
+            <dl class="quote-stats">
+              <div>
+                <dt>Previous close</dt>
+                <dd id="stat-prev">—</dd>
+                <dt>Daily low</dt>
+                <dd id="stat-low">—</dd>
+              </div>
+              <div>
+                <dt>Opening Price</dt>
+                <dd id="stat-open">—</dd>
+                <dt>Daily high</dt>
+                <dd id="stat-high">—</dd>
+              </div>
+              <div>
+                <dt>Volume (Shares)</dt>
+                <dd id="stat-volume">—</dd>
+                <dt>Market Capitalization</dt>
+                <dd id="stat-market-cap">—</dd>
+              </div>
+              <div>
+                <dt>Day change</dt>
+                <dd id="stat-cap">$0.00 (0.00%)</dd>
+              </div>
+            </dl>
+          </section>
+
+          <section class="card trade-bar">
+            <h2>Quick Buy / Sell Stock</h2>
+            <div class="trade-controls">
+              <div class="quantity-control">
+                <label class="qty-field">
+                  <input id="share-qty" type="number" min="1" step="1" value="10" />
+                  <span>Shares</span>
+                </label>
+                <div id="dashboard-quantity-shortcuts" class="quantity-shortcuts" aria-label="Share quantity shortcuts">
+                  <button type="button" data-quantity="1">1</button>
+                  <button type="button" data-quantity="10">10</button>
+                  <button type="button" data-quantity="100">100</button>
+                  <button type="button" data-quantity="max" data-side="buy">Max Buy</button>
+                  <button type="button" data-quantity="max" data-side="sell">Max Sell</button>
+                  <button type="button" data-quantity="clear">Clear</button>
+                </div>
+              </div>
+              <button id="buy-order" class="btn-buy" type="button">Buy Order</button>
+              <button id="sell-order" class="btn-sell" type="button">Sell Order</button>
+            </div>
+          </section>
+          <p id="trade-message" class="trade-message" hidden></p>
+        </div>
+      </div>
+    </div>
+    <script src="js/auth.js"></script>
+    <script src="js/market.js"></script>
+    <script src="js/trading.js"></script>
+    <script src="js/quantity.js"></script>
+    <script src="js/shell.js"></script>
+    <script src="js/dashboard.js"></script>
+  </body>
+</html>

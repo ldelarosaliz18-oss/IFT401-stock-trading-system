@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stock Management · StockTrade</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body class="app-body">
+    <div class="app-shell">
+      <header class="app-header">
+        <a class="brand brand-dark" href="dashboard.html">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M4 16.5L9 11l3.5 3.5L20 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M15 7h5v5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </span>
+          <span class="brand-name">STOCKTRADE</span>
+        </a>
+        <nav class="app-nav" aria-label="Primary">
+          <a class="nav-link" href="dashboard.html">Market Dashboard</a>
+          <a class="nav-link" href="orders.html">Orders</a>
+          <a class="nav-link" href="portfolio.html">Portfolio</a>
+          <a class="nav-link" href="history.html">History</a>
+        </nav>
+        <div class="header-meta">
+          <div class="buying-power">
+            <span class="meta-label">Available cash balance</span>
+            <strong id="buying-power">$0.00</strong>
+          </div>
+          <div class="account-chip">
+            <span id="user-name">Trader</span>
+            <button id="sign-out" class="btn-logout" type="button">Logout</button>
+          </div>
+        </div>
+      </header>
+
+      <div id="management-content">
+        <div class="management-stock-layout">
+          <section class="card management-card">
+            <h1>Stock Creator</h1>
+            <form id="stock-form" class="management-form">
+              <label for="stock-symbol">Ticker Symbol</label>
+              <input id="stock-symbol" name="symbol" type="text" maxlength="10" placeholder="e.g., GOOG" required />
+              <label for="company-name">Company Name</label>
+              <input id="company-name" name="company_name" type="text" maxlength="120" placeholder="e.g., Alphabet Inc." required />
+              <label for="initial-price">Initial Price ($)</label>
+              <input id="initial-price" name="initial_price" type="number" min="0.01" step="0.01" placeholder="100.00" required />
+              <label for="stock-volume">Available Shares</label>
+              <input id="stock-volume" name="volume" type="number" min="1" step="1" placeholder="e.g., 100,000" required />
+              <button class="btn-primary" type="submit">Create Stock</button>
+            </form>
+          </section>
+
+          <section class="card management-card management-list-card">
+            <h2>Market Stocks Editor</h2>
+            <div class="data-table-wrap">
+              <table class="data-table management-table">
+                <thead>
+                  <tr>
+                    <th scope="col">Ticker</th>
+                    <th scope="col">Company</th>
+                    <th scope="col">Market Price</th>
+                    <th scope="col">Available Shares</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody id="management-stock-list"></tbody>
+              </table>
+            </div>
+          </section>
+        </div>
+
+        <p id="management-message" class="management-message" role="status" hidden></p>
+
+        <section class="card market-schedule-card">
+          <div class="market-clock-section">
+            <form id="market-clock-form">
+              <fieldset class="market-clock-fields">
+                <legend>Current Date &amp; Time</legend>
+                <p class="market-clock-default">The default is your local time.</p>
+                <div class="market-clock-control">
+                  <label for="market-clock-date">Market date</label>
+                  <input id="market-clock-date" type="date" required />
+                </div>
+                <div class="market-clock-control">
+                  <label for="market-clock-time">Market time</label>
+                  <div class="time-input-group">
+                    <input id="market-clock-time" type="text" inputmode="numeric" pattern="(?:0?[1-9]|1[0-2]):[0-5][0-9]" placeholder="9:30" title="Enter a time like 9:30." required />
+                    <select id="market-clock-period" aria-label="Market time AM or PM">
+                      <option value="AM">AM</option>
+                      <option value="PM">PM</option>
+                    </select>
+                  </div>
+                </div>
+                <p class="market-clock-hint">Ensure the time is set during market hours for the market to be open and prices to update.</p>
+                <p id="market-clock-status" class="market-clock-status" role="status"></p>
+                <div class="market-clock-actions">
+                  <button class="btn-primary" type="submit">Set Market Time</button>
+                  <button id="use-live-clock" class="btn-secondary" type="button">Use Current Time</button>
+                </div>
+              </fieldset>
+            </form>
+          </div>
+          <div class="schedule-heading">
+            <h2>Market Hours &amp; Schedule</h2>
+          </div>
+          <form id="market-schedule-form">
+            <fieldset class="market-hours">
+              <span class="market-clock-default trading-hours-label">Trading Hours (Eastern Time)</span>
+              <label>
+                Open
+                <div class="time-input-group">
+                  <input id="market-open" type="text" inputmode="numeric" pattern="(?:0?[1-9]|1[0-2]):[0-5][0-9]" placeholder="9:30" title="Enter a time like 9:30." required />
+                  <select id="market-open-period" aria-label="Market open AM or PM">
+                    <option value="AM">AM</option>
+                    <option value="PM">PM</option>
+                  </select>
+                </div>
+              </label>
+              <label>
+                Close
+                <div class="time-input-group">
+                  <input id="market-close" type="text" inputmode="numeric" pattern="(?:0?[1-9]|1[0-2]):[0-5][0-9]" placeholder="4:00" title="Enter a time like 4:00." required />
+                  <select id="market-close-period" aria-label="Market close AM or PM">
+                    <option value="AM">AM</option>
+                    <option value="PM" selected>PM</option>
+                  </select>
+                </div>
+              </label>
+            </fieldset>
+            <div class="trading-days-row">
+              <fieldset class="trading-days">
+                <p class="trading-days-label">Trading Days</p>
+                <p class="trading-days-note">Set the trading days below. Weekdays only; the market is always closed on weekends.</p>
+                <div id="trading-days" class="weekday-picker">
+                  <button id="save-market-schedule" class="btn-primary" type="submit">
+                    Save Market Schedule
+                  </button>
+                </div>
+              </fieldset>
+            </div>
+          </form>
+
+          <div class="market-holiday-section">
+            <div class="market-holiday-heading">
+              <h3>Market Holidays</h3>
+              <p>Select a date to add a market holiday.</p>
+            </div>
+            <div class="holiday-entry-controls">
+              <label for="holiday-date">Holiday date</label>
+              <div class="holiday-date-entry">
+                <input id="holiday-date" type="text" inputmode="numeric" placeholder="MM/DD/YYYY" maxlength="10" pattern="(?:0[1-9]|1[0-2])/(?:0[1-9]|[12][0-9]|3[01])/[0-9]{4}" title="Enter a date as MM/DD/YYYY." required />
+                <button id="add-holiday" class="btn-primary holiday-add-button" type="button">Add Holiday</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="holiday-list-section">
+            <h3>Scheduled Holidays</h3>
+            <ul id="holiday-list" class="holiday-list"></ul>
+          </div>
+        </section>
+      </div>
+    </div>
+    <script src="js/auth.js"></script>
+    <script src="js/shell.js"></script>
+    <script src="js/stock-management.js"></script>
+  </body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio · StockTrade</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body class="app-body">
+    <div class="app-shell">
+      <header class="app-header">
+        <a class="brand brand-dark" href="dashboard.html">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M4 16.5L9 11l3.5 3.5L20 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M15 7h5v5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </span>
+          <span class="brand-name">STOCKTRADE</span>
+        </a>
+        <nav class="app-nav" aria-label="Primary">
+          <a class="nav-link" href="dashboard.html">Market Dashboard</a>
+          <a class="nav-link" href="orders.html">Orders</a>
+          <a class="nav-link active" href="portfolio.html">Portfolio</a>
+          <a class="nav-link" href="history.html">History</a>
+        </nav>
+        <div class="header-meta">
+          <div class="buying-power">
+            <span class="meta-label">Available cash balance</span>
+            <strong id="buying-power">$0.00</strong>
+          </div>
+          <div class="account-chip">
+            <span id="user-name">Trader</span>
+            <button id="sign-out" class="btn-logout" type="button">Logout</button>
+          </div>
+        </div>
+      </header>
+      <section class="portfolio-overview" aria-label="Portfolio summary">
+        <article class="card portfolio-metric-card">
+          <p class="portfolio-label">Portfolio Value</p>
+          <div class="portfolio-value-line">
+            <strong id="portfolio-value">$0.00</strong>
+            <span id="portfolio-profit-loss">$0.00 (0.00%)</span>
+          </div>
+        </article>
+        <article class="card cash-balance-card">
+          <div class="cash-actions">
+            <p class="portfolio-label">Deposit or withdraw cash balance</p>
+            <div class="cash-action-buttons">
+              <button class="btn-primary" type="button" data-cash-action="deposit">Deposit</button>
+              <button class="btn-secondary" type="button" data-cash-action="withdraw">Withdraw</button>
+            </div>
+          </div>
+          <div class="cash-available">
+            <p class="portfolio-label">Available cash balance</p>
+            <strong id="portfolio-cash">$0.00</strong>
+          </div>
+        </article>
+      </section>
+      <section class="card portfolio-holdings-card">
+        <h2>Simulated Holdings</h2>
+        <div id="table-target"></div>
+      </section>
+    </div>
+    <dialog id="cash-dialog" class="cash-dialog">
+      <form id="cash-form">
+        <h2 id="cash-dialog-title">Adjust cash balance</h2>
+        <p class="cash-dialog-note">This changes simulated funds only; no real money is transferred.</p>
+        <label for="cash-amount">Amount</label>
+        <input id="cash-amount" type="number" min="0.01" step="0.01" required />
+        <p id="cash-error" class="form-error" role="alert" hidden></p>
+        <div class="cash-dialog-actions">
+          <button id="cash-dialog-cancel" class="btn-secondary" type="button">Cancel</button>
+          <button id="cash-submit" class="btn-primary" type="submit">Confirm</button>
+        </div>
+      </form>
+    </dialog>
+    <script src="js/auth.js"></script>
+    <script src="js/shell.js"></script>
+    <script src="js/tables.js"></script>
+    <script src="js/portfolio.js"></script>
+  </body>
+</html>
